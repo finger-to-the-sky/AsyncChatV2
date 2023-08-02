@@ -38,3 +38,25 @@ class LoginHistory(Base):
     port: Mapped[str] = mapped_column(String)
     user_id = mapped_column(ForeignKey('users.id'))
     user: Mapped['Users'] = relationship(back_populates='login_history')
+
+
+# Clients models
+class KnownUsers(Base):
+    __tablename__ = 'known_users'
+    id: Mapped[int] = mapped_column(primary_key=True)
+    username: Mapped[str] = mapped_column(String(50))
+
+
+class MessageHistory(Base):
+    __tablename__ = 'message_history'
+    id: Mapped[int] = mapped_column(primary_key=True)
+    from_user: Mapped[str] = mapped_column(String)
+    to_user: Mapped[str] = mapped_column(String)
+    message: Mapped[str] = mapped_column(String)
+    date: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
+
+
+class Contacts(Base):
+    __tablename__ = 'contacts'
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(50), unique=True)

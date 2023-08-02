@@ -1,6 +1,6 @@
 import datetime
 from sqlalchemy import create_engine
-from .models import Base, Users, ActiveUsers, LoginHistory
+from models import Base, Users, ActiveUsers, LoginHistory
 from sqlalchemy.orm import Session
 
 
